@@ -1,0 +1,48 @@
+--- 
+- !ruby/object:Rubber::Configuration::InstanceItem 
+  domain: asheville-rb.org
+  instance_id: i-f9311091
+  name: development
+  roles: 
+  - !ruby/object:Rubber::Configuration::RoleItem 
+    name: web
+    options: {}
+
+  - !ruby/object:Rubber::Configuration::RoleItem 
+    name: haproxy
+    options: {}
+
+  - !ruby/object:Rubber::Configuration::RoleItem 
+    name: app
+    options: {}
+
+  - !ruby/object:Rubber::Configuration::RoleItem 
+    name: passenger
+    options: {}
+
+  - !ruby/object:Rubber::Configuration::RoleItem 
+    name: apache
+    options: {}
+
+  - !ruby/object:Rubber::Configuration::RoleItem 
+    name: db
+    options: 
+      primary: true
+  - !ruby/object:Rubber::Configuration::RoleItem 
+    name: mysql_master
+    options: {}
+
+  security_groups: 
+  - rubber_presentation_example_development_default
+  - rubber_presentation_example_development_web
+  - rubber_presentation_example_development_development
+  - rubber_presentation_example_development_haproxy
+  - rubber_presentation_example_development_app
+  - rubber_presentation_example_development_passenger
+  - rubber_presentation_example_development_apache
+  - rubber_presentation_example_development_db
+  - rubber_presentation_example_development_mysql_master
+- volumes: {}
+
+  static_ips: {}
+

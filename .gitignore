@@ -1,0 +1,9 @@
+gems/*
+!gems/cache
+!gems/bundler
+log/
+tmp/
+*~
+*#
+.#*
+*.swp
