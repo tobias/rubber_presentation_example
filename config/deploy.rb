@@ -51,10 +51,13 @@ end
 
 namespace :rubber do
   task :install_rails_gems do
-    run "cd #{current_path};./script/bundle"
+    puts 'task rubber:install_rails_gems is currently a noop'
   end
 end
 
+task :run_bundler do
+  run "cd #{current_path};./script/bundle"
+end
 
 task :setup_known_hosts do
   run "echo 'github.com,65.74.180.52 ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==' > ~/.ssh/known_hosts"
@@ -67,4 +70,6 @@ Dir["#{File.dirname(__FILE__)}/rubber/deploy-*.rb"].each do |deploy_file|
 end
 
 before "deploy:update_code", "setup_known_hosts"
+before "rubbber:config", "run_bundler"
+
 after "deploy", "deploy:cleanup"
